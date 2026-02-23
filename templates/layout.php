@@ -186,6 +186,10 @@ $_categories = \App\models\Category::all();
                 <a href="https://cor-forum.de" class="text-secondary text-decoration-none" target="_blank" rel="noopener">
                     <i class="bi bi-chat-dots me-1"></i><?= e(__('footer_forum')) ?>
                 </a>
+                <br>
+                <a href="https://github.com/CoR-Forum/Tools4Regnum" class="text-secondary text-decoration-none" target="_blank" rel="noopener">
+                    <i class="bi bi-github me-1"></i>GitHub
+                </a>
             </div>
         </div>
     </div>
