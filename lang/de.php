@@ -21,6 +21,7 @@ return [
     'page'              => 'Seite',
     'of'                => 'von',
     'no_entries'        => 'Noch keine Einträge in dieser Kategorie.',
+    'all_loaded'        => 'Alle Einträge geladen.',
     'created_at'        => 'Erstellt am',
     'updated_at'        => 'Aktualisiert am',
     'details'           => 'Details',
@@ -100,6 +101,10 @@ return [
 
     // Contributor notice
     'contributor_notice' => 'Möchtest du Inhalte hinzufügen oder bearbeiten? Kontaktiere <strong>Joshua2504</strong> im Forum.',
+    'toggle_scroll_mode' => 'Endloses Scrollen / Seitennavigation umschalten',
+    'infinite_scrolling' => 'Endloses Scrollen',
+    'infinite_scrolling_on' => 'Endloses Scrollen: An',
+    'infinite_scrolling_off' => 'Endloses Scrollen: Aus',
 
     // Footer
     'footer_text'       => 'Tools4Regnum ist ein Fan-Projekt und steht in keiner Verbindung zu NGD Studios.',

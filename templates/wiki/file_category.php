@@ -69,7 +69,13 @@ $isAudio    = in_array($category['slug'], ['sounds', 'music']);
 
         <?php if ($isTextures): ?>
             <!-- Texture grid (image thumbnails) -->
-            <div class="row g-3">
+            <div class="row g-3 infinite-scroll-container"
+                 data-infinite-url="/api/files/<?= e($category['slug']) ?>"
+                 data-infinite-page="<?= $pagination['page'] ?>"
+                 data-infinite-total-pages="<?= $pagination['totalPages'] ?>"
+                 data-infinite-type="textures"
+                 data-infinite-query="<?= e($query) ?>"
+                 data-category-slug="<?= e($category['slug']) ?>">
                 <?php foreach ($items as $item): ?>
                     <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                         <a href="/<?= e($category['slug']) ?>/<?= e($item['slug']) ?>" class="text-decoration-none">
@@ -95,7 +101,14 @@ $isAudio    = in_array($category['slug'], ['sounds', 'music']);
 
         <?php elseif ($isAudio): ?>
             <!-- Audio list -->
-            <div class="list-group">
+            <div class="list-group infinite-scroll-container"
+                 data-infinite-url="/api/files/<?= e($category['slug']) ?>"
+                 data-infinite-page="<?= $pagination['page'] ?>"
+                 data-infinite-total-pages="<?= $pagination['totalPages'] ?>"
+                 data-infinite-type="audio"
+                 data-infinite-query="<?= e($query) ?>"
+                 data-category-slug="<?= e($category['slug']) ?>"
+                 data-audio-icon="<?= $category['slug'] === 'music' ? 'music-note-beamed' : 'volume-up' ?>">
                 <?php foreach ($items as $item): ?>
                     <div class="list-group-item d-flex align-items-center gap-3">
                         <a href="/<?= e($category['slug']) ?>/<?= e($item['slug']) ?>"
@@ -117,51 +130,43 @@ $isAudio    = in_array($category['slug'], ['sounds', 'music']);
             </div>
         <?php endif; ?>
 
-        <!-- Pagination -->
+        <!-- Infinite scroll sentinel -->
+        <div class="infinite-scroll-sentinel"></div>
+        <div class="infinite-scroll-loader text-center py-4" style="display:none;">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="infinite-scroll-end text-center py-3" style="display:none;">
+            <small class="text-muted"><i class="bi bi-check-circle me-1"></i><?= e(__('all_loaded')) ?></small>
+        </div>
+
+        <!-- Pagination (shown when infinite scroll is off) -->
         <?php if ($pagination['totalPages'] > 1): ?>
-            <nav class="mt-4">
+            <nav class="mt-4 pagination-nav" style="display:none;">
                 <ul class="pagination justify-content-center flex-wrap">
                     <?php
                     $p = $pagination['page'];
                     $tp = $pagination['totalPages'];
                     $qs = $query !== '' ? '&q=' . urlencode($query) : '';
-
-                    // Previous
                     if ($p > 1): ?>
-                        <li class="page-item">
-                            <a class="page-link" href="?page=<?= $p - 1 ?><?= $qs ?>">&laquo;</a>
-                        </li>
+                        <li class="page-item"><a class="page-link" href="?page=<?= $p - 1 ?><?= $qs ?>">&laquo;</a></li>
                     <?php endif;
-
-                    // Page numbers (show max 10 around current)
                     $start = max(1, $p - 5);
                     $end = min($tp, $p + 5);
-
                     if ($start > 1): ?>
                         <li class="page-item"><a class="page-link" href="?page=1<?= $qs ?>">1</a></li>
-                        <?php if ($start > 2): ?>
-                            <li class="page-item disabled"><span class="page-link">…</span></li>
-                        <?php endif;
+                        <?php if ($start > 2): ?><li class="page-item disabled"><span class="page-link">&hellip;</span></li><?php endif;
                     endif;
-
                     for ($i = $start; $i <= $end; $i++): ?>
-                        <li class="page-item <?= $i === $p ? 'active' : '' ?>">
-                            <a class="page-link" href="?page=<?= $i ?><?= $qs ?>"><?= $i ?></a>
-                        </li>
+                        <li class="page-item <?= $i === $p ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?><?= $qs ?>"><?= $i ?></a></li>
                     <?php endfor;
-
                     if ($end < $tp): ?>
-                        <?php if ($end < $tp - 1): ?>
-                            <li class="page-item disabled"><span class="page-link">…</span></li>
-                        <?php endif; ?>
+                        <?php if ($end < $tp - 1): ?><li class="page-item disabled"><span class="page-link">&hellip;</span></li><?php endif; ?>
                         <li class="page-item"><a class="page-link" href="?page=<?= $tp ?><?= $qs ?>"><?= $tp ?></a></li>
                     <?php endif;
-
-                    // Next
                     if ($p < $tp): ?>
-                        <li class="page-item">
-                            <a class="page-link" href="?page=<?= $p + 1 ?><?= $qs ?>">&raquo;</a>
-                        </li>
+                        <li class="page-item"><a class="page-link" href="?page=<?= $p + 1 ?><?= $qs ?>">&raquo;</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>

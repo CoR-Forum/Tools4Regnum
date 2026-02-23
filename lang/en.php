@@ -21,6 +21,7 @@ return [
     'page'              => 'Page',
     'of'                => 'of',
     'no_entries'        => 'No entries in this category yet.',
+    'all_loaded'        => 'All entries loaded.',
     'created_at'        => 'Created at',
     'updated_at'        => 'Updated at',
     'details'           => 'Details',
@@ -100,6 +101,10 @@ return [
 
     // Contributor notice
     'contributor_notice' => 'Want to add or modify content? Contact <strong>Joshua2504</strong> on the forum.',
+    'toggle_scroll_mode' => 'Toggle infinite scroll / pagination',
+    'infinite_scrolling' => 'Infinite Scrolling',
+    'infinite_scrolling_on' => 'Infinite Scrolling: On',
+    'infinite_scrolling_off' => 'Infinite Scrolling: Off',
 
     // Footer
     'footer_text'       => 'Tools4Regnum is a fan project and is not affiliated with NGD Studios.',

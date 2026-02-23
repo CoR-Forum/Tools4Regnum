@@ -2,6 +2,7 @@
 namespace App\controllers;
 
 use App\Auth;
+use App\models\Category;
 use App\models\Entry;
 use App\models\Favorite;
 use App\models\FileResource;
@@ -101,6 +102,94 @@ class ApiController
             'success'     => true,
             'is_favorited'=> $isFavorited,
             'message'     => $isFavorited ? __('favorite_added') : __('favorite_removed'),
+        ]);
+    }
+
+    /**
+     * Paginated wiki entries for a category (JSON).
+     * GET /api/entries/{category}?page=N
+     */
+    public static function entries(array $params): void
+    {
+        $slug = $params['category'] ?? '';
+        $category = Category::findBySlug($slug);
+        if (!$category) {
+            jsonResponse(['items' => [], 'page' => 1, 'totalPages' => 1], 404);
+            return;
+        }
+
+        $page = max(1, intval($_GET['page'] ?? 1));
+        $perPage = 24;
+        $total = Entry::countByCategory($category['id']);
+        $totalPages = max(1, (int)ceil($total / $perPage));
+        $page = min($page, $totalPages);
+        $offset = ($page - 1) * $perPage;
+
+        $entries = Entry::byCategory($category['id'], null, $perPage, $offset);
+
+        $favoriteIds = [];
+        if (Auth::isLoggedIn()) {
+            $favoriteIds = Favorite::entryIdsForUser(Auth::userId());
+        }
+
+        $items = [];
+        foreach ($entries as $e) {
+            $images = json_decode($e['images_json'] ?? '[]', true) ?: [];
+            $items[] = [
+                'id'            => (int)$e['id'],
+                'slug'          => $e['slug'],
+                'title'         => $e['title'] ?? $e['slug'],
+                'summary'       => $e['summary'] ?? '',
+                'thumb'         => $images[0] ?? '',
+                'category_slug' => $category['slug'],
+                'category_icon' => $category['icon'] ?? 'bi-file-text',
+                'is_favorited'  => in_array($e['id'], $favoriteIds),
+                'url'           => '/' . $category['slug'] . '/' . $e['slug'],
+            ];
+        }
+
+        jsonResponse([
+            'items'      => $items,
+            'page'       => $page,
+            'totalPages' => $totalPages,
+            'total'      => $total,
+        ]);
+    }
+
+    /**
+     * Paginated file resources for a category (JSON).
+     * GET /api/files/{category}?page=N&q=query
+     */
+    public static function files(array $params): void
+    {
+        $slug = $params['category'] ?? '';
+        if (!FileResource::isFileCategory($slug)) {
+            jsonResponse(['items' => [], 'page' => 1, 'totalPages' => 1], 404);
+            return;
+        }
+
+        $query = trim($_GET['q'] ?? '');
+        $page = max(1, intval($_GET['page'] ?? 1));
+        $result = FileResource::paginate($slug, $page, 48, $query);
+
+        $items = [];
+        foreach ($result['items'] as $f) {
+            $items[] = [
+                'slug'          => $f['slug'],
+                'name'          => $f['name'],
+                'file_id'       => $f['file_id'],
+                'url'           => $f['url'],
+                'extension'     => $f['extension'],
+                'type'          => $f['type'],
+                'category_slug' => $slug,
+            ];
+        }
+
+        jsonResponse([
+            'items'      => $items,
+            'page'       => $result['pagination']['page'],
+            'totalPages' => $result['pagination']['totalPages'],
+            'total'      => $result['pagination']['total'],
         ]);
     }
 }

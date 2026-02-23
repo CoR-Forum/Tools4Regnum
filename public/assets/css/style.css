@@ -215,6 +215,27 @@ footer h6 {
     color: #dc3545;
 }
 
+/* Scroll mode toggle */
+.scroll-mode-toggle {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.scroll-mode-toggle:hover {
+    color: var(--medieval-gold) !important;
+}
+
+.scroll-mode-toggle.active {
+    color: var(--medieval-gold);
+}
+
+.scroll-mode-toggle #scrollModeLabel {
+    font-size: 0.85rem;
+}
+
 /* Scroll header decoration */
 section > .container > h2 {
     color: var(--medieval-gold);
@@ -344,6 +365,27 @@ section > .container > h2::after {
 .file-grid-loading {
     opacity: 0.5;
     pointer-events: none;
+}
+
+/* ============================================================
+   Infinite Scroll
+   ============================================================ */
+.infinite-scroll-sentinel {
+    height: 1px;
+    width: 100%;
+}
+
+.infinite-scroll-loader {
+    animation: fadeIn 0.2s ease;
+}
+
+.infinite-scroll-end {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 /* Responsive */

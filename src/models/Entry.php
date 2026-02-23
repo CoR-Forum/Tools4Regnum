@@ -240,7 +240,7 @@ class Entry
         // Use FTS5 MATCH
         $stmt = $pdo->prepare('
             SELECT et.entry_id, et.title, et.summary, et.lang,
-                   e.slug, e.image, e.category_id,
+                   e.slug, e.images_json, e.category_id,
                    c.slug as category_slug,
                    snippet(entries_fts, 2, \'<mark>\', \'</mark>\', \'…\', 40) as snippet
             FROM entries_fts

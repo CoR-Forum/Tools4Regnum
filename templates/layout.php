@@ -97,6 +97,13 @@ $_categories = \App\models\Category::all();
 
             <!-- Right side -->
             <ul class="navbar-nav">
+                <!-- Scroll mode toggle -->
+                <li class="nav-item">
+                    <a class="nav-link scroll-mode-toggle" href="#" title="<?= e(__('toggle_scroll_mode')) ?>" id="scrollModeToggle">
+                        <i class="bi bi-arrow-repeat" id="scrollModeIcon"></i>
+                        <span id="scrollModeLabel" data-on="<?= e(__('infinite_scrolling_on')) ?>" data-off="<?= e(__('infinite_scrolling_off')) ?>"><?= e(__('infinite_scrolling')) ?></span>
+                    </a>
+                </li>
                 <!-- Language switcher -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">

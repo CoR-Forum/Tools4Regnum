@@ -52,6 +52,8 @@ $router->get('/favorites', [FavoriteController::class, 'index']);
 // API endpoints (AJAX)
 $router->get('/api/search', [ApiController::class, 'search']);
 $router->post('/api/favorite/toggle', [ApiController::class, 'toggleFavorite']);
+$router->get('/api/entries/{category}', [ApiController::class, 'entries']);
+$router->get('/api/files/{category}', [ApiController::class, 'files']);
 
 // Admin
 $router->get('/admin',                  [AdminController::class, 'dashboard']);
