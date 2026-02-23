@@ -165,8 +165,8 @@ $_categories = \App\models\Category::all();
 </div>
 <?php endif; ?>
 
-<!-- Contributor notice for non-admins -->
-<?php if (!$_isAdmin): ?>
+<!-- Contributor notice for logged-in non-admins -->
+<?php if ($_user && !$_isAdmin): ?>
 <div class="container mt-3">
     <div class="alert alert-secondary d-flex align-items-center py-2 mb-0" role="alert">
         <i class="bi bi-pencil-square me-2"></i>
