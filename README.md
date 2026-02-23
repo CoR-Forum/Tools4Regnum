@@ -2,7 +2,7 @@
 
 A comprehensive wiki and resource browser for **Champions of Regnum** (formerly Regnum Online). Built with PHP 8.4, SQLite, and Bootstrap 5 in a medieval dark theme.
 
-**Live:** [tools4regnum.cor-forum.de](https://tools4regnum.cor-forum.de)
+**Live:** [tools4regnum.de](https://tools4regnum.de)
 
 ## Features
 
