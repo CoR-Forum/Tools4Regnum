@@ -24,7 +24,15 @@ jobs:
             --exclude 'data/tools4regnum.sqlite' \
             --exclude '.env' \
             --exclude '.git' \
+            --exclude 'data/' \
+            --exclude 'public/uploads/' \
             ./ ${{ vars.SSH_PATH }}
+
+      - name: Sync data files (no delete)
+        run: |
+          rsync -avz \
+            --exclude 'tools4regnum.sqlite' \
+            ./data/ ${{ vars.SSH_PATH }}data/
 
       - name: Restart containers
         run: |
