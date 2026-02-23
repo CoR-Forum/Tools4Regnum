@@ -1,239 +1,241 @@
 /* ============================================================
-   Tools4Regnum — Custom Styles (Dark Mode)
+   Tools4Regnum — Medieval Dark Theme
    ============================================================ */
 
-/* Body */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+    --medieval-gold: #c9a84c;
+    --medieval-gold-dim: #a67c2e;
+    --medieval-leather: #2a1f14;
+    --medieval-parchment: #1a1510;
+    --medieval-stone: #1e1e1e;
+    --medieval-iron: #3a3a3a;
+    --medieval-border: #3d3122;
+}
+
+/* Override Bootstrap dark theme colors */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #121010;
+    --bs-secondary-bg: #1a1714;
+    --bs-tertiary-bg: #211d18;
+    --bs-body-color: #d4cfc7;
+    --bs-border-color: var(--medieval-border);
+    --bs-link-color: var(--medieval-gold);
+    --bs-link-hover-color: #ddb85d;
+    --bs-primary-rgb: 201, 168, 76;
+}
+
 body {
-    background-color: #0d1117;
-    color: #c9d1d9;
+    font-family: 'Lora', Georgia, serif;
 }
 
-/* Hero section */
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.card-title,
+.display-4 {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+}
+
+/* Navbar — dark wood feel */
+.navbar {
+    background: linear-gradient(180deg, #1a1510 0%, #12100c 100%) !important;
+    border-bottom: 2px solid var(--medieval-gold-dim);
+}
+
+.navbar-brand {
+    color: var(--medieval-gold) !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #b8a88a !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--medieval-gold) !important;
+}
+
+/* CoRT notice bar */
+.cort-notice {
+    background: var(--medieval-gold-dim) !important;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Hero — stone/banner */
 .hero-section {
-    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0f3460 100%);
+    background: linear-gradient(180deg, #0f0d0a 0%, #1a1510 50%, #0f0d0a 100%);
+    border-bottom: 3px solid var(--medieval-gold-dim);
     position: relative;
-    overflow: visible;
-    z-index: 10;
 }
 
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>') repeat;
-    opacity: 0.4;
-    pointer-events: none;
+.hero-section h1 {
+    color: var(--medieval-gold);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
-.hero-section > * {
-    position: relative;
-    z-index: 1;
+.hero-section .lead {
+    color: #b8a88a;
+}
+
+/* Cards — parchment/leather */
+.card {
+    background: var(--bs-secondary-bg);
+    border: 1px solid var(--medieval-border);
+    border-radius: 4px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.card-title {
+    color: var(--medieval-gold) !important;
 }
 
 /* Category cards */
-.category-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-radius: 12px;
-    background-color: var(--bs-secondary-bg);
-    border: 1px solid var(--bs-border-color) !important;
+.category-card .bi {
+    color: var(--medieval-gold) !important;
 }
 
-.category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35) !important;
+/* Badges */
+.badge.bg-secondary {
+    background-color: var(--medieval-iron) !important;
+    color: #b8a88a;
 }
 
-/* Entry cards */
-.entry-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: var(--bs-secondary-bg);
-    border: 1px solid var(--bs-border-color) !important;
+.badge.bg-primary {
+    background-color: var(--medieval-gold-dim) !important;
+    color: #1a1510;
 }
 
-.entry-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+/* Buttons */
+.btn-primary {
+    background-color: var(--medieval-gold-dim);
+    border-color: var(--medieval-gold-dim);
+    color: #1a1510;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
 }
 
-/* Favorite button */
-.favorite-btn {
-    transition: transform 0.2s ease;
+.btn-primary:hover {
+    background-color: var(--medieval-gold);
+    border-color: var(--medieval-gold);
+    color: #0f0d0a;
 }
 
-.favorite-btn:hover {
-    transform: scale(1.2);
+.btn-outline-primary {
+    color: var(--medieval-gold);
+    border-color: var(--medieval-gold-dim);
 }
 
+.btn-outline-primary:hover {
+    background-color: var(--medieval-gold-dim);
+    border-color: var(--medieval-gold-dim);
+    color: #1a1510;
+}
+
+.btn-outline-light {
+    border-color: #5a4a32;
+    color: #b8a88a;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--medieval-gold-dim);
+    border-color: var(--medieval-gold-dim);
+    color: #1a1510;
+}
+
+/* Form controls */
+.form-control,
+.form-select {
+    background-color: #1a1714;
+    border-color: var(--medieval-border);
+    color: #d4cfc7;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--medieval-gold-dim);
+    box-shadow: 0 0 0 0.2rem rgba(201, 168, 76, 0.2);
+}
+
+/* Separator / dividers */
+hr, .dropdown-divider {
+    border-color: var(--medieval-border);
+}
+
+/* Dropdown */
+.dropdown-menu-dark {
+    background-color: #1a1510;
+    border: 1px solid var(--medieval-border);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--medieval-leather);
+}
+
+/* Footer — stone */
+footer {
+    background: linear-gradient(180deg, #12100c 0%, #0a0908 100%) !important;
+    border-top: 2px solid var(--medieval-gold-dim);
+}
+
+footer h6 {
+    color: var(--medieval-gold);
+}
+
+/* Breadcrumb */
+.breadcrumb-item a {
+    color: var(--medieval-gold);
+}
+
+/* Pagination */
+.page-item.active .page-link {
+    background-color: var(--medieval-gold-dim);
+    border-color: var(--medieval-gold-dim);
+    color: #1a1510;
+}
+
+.page-link:hover {
+    background-color: var(--medieval-leather);
+    color: var(--medieval-gold);
+}
+
+/* Favorite */
 .favorite-btn .bi-heart-fill {
     color: #dc3545;
 }
 
-/* Entry body content */
-.entry-body {
-    line-height: 1.8;
-    font-size: 1.05rem;
+/* Scroll header decoration */
+section > .container > h2 {
+    color: var(--medieval-gold);
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
-.entry-body p {
-    margin-bottom: 1rem;
+section > .container > h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--medieval-gold-dim);
 }
 
-/* Navbar */
-.navbar-brand {
-    font-size: 1.25rem;
-    letter-spacing: 0.5px;
-}
-
-/* Cards general */
-.card {
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: var(--bs-secondary-bg);
-    border-color: var(--bs-border-color);
-}
-
-.card-header {
-    font-weight: 600;
-    background-color: var(--bs-tertiary-bg);
-}
-
-/* Search highlight */
-mark {
-    background-color: #4a3f00;
-    color: #ffc107;
-    padding: 0.1em 0.2em;
-    border-radius: 3px;
-}
-
-/* Footer */
-footer {
-    border-top: 3px solid #0f3460;
-    background-color: #010409 !important;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-    background: transparent;
-    padding: 0;
-}
-
-/* Badge styling */
-.badge {
-    font-weight: 500;
-}
-
-/* Admin tables */
-.table code {
-    font-size: 0.85em;
-    color: #6ea8fe;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 2rem 0;
-    }
-
-    .hero-section h1 {
-        font-size: 1.75rem;
-    }
-
-    .display-4 {
-        font-size: 2rem;
-    }
-}
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Selection color */
-::selection {
-    background-color: #0f3460;
-    color: #fff;
-}
-
-/* Placeholder styling */
-::placeholder {
-    opacity: 0.5;
-    color: #6c757d;
-}
-
-/* Form controls in dark mode */
-.form-control, .form-select {
-    background-color: var(--bs-tertiary-bg);
-    border-color: var(--bs-border-color);
-    color: var(--bs-body-color);
-}
-
-.form-control:focus, .form-select:focus {
-    background-color: var(--bs-tertiary-bg);
-    border-color: #0d6efd;
-    color: var(--bs-body-color);
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
-/* List group dark */
-.list-group-item {
-    background-color: var(--bs-secondary-bg);
-    border-color: var(--bs-border-color);
-    color: var(--bs-body-color);
-}
-
-.list-group-item-action:hover {
-    background-color: var(--bs-tertiary-bg);
-    color: var(--bs-body-color);
-}
-
-/* Alert adjustments */
-.alert-info {
-    background-color: rgba(13, 110, 253, 0.15);
-    border-color: rgba(13, 110, 253, 0.3);
-    color: #6ea8fe;
-}
-
-/* Pagination dark */
-.page-link {
-    background-color: var(--bs-secondary-bg);
-    border-color: var(--bs-border-color);
-    color: var(--bs-body-color);
-}
-
-.page-link:hover {
-    background-color: var(--bs-tertiary-bg);
-    color: #fff;
-}
-
-.page-item.active .page-link {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
-
-/* Card text overrides for dark */
-.card-title, .card-text {
-    color: var(--bs-body-color);
-}
-
-.text-dark {
-    color: var(--bs-body-color) !important;
-}
-
-/* Loading spinner (for AJAX) */
-.spinner-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 9999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-
-.spinner-overlay.active {
-    display: flex;
+/* Section accent bg */
+.section-alt {
+    background-color: #161310;
 }
 
 /* ============================================================
@@ -249,11 +251,11 @@ html {
     left: 0;
     right: 0;
     z-index: 1060;
-    background: #161b22;
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #1a1714;
+    border: 1px solid var(--medieval-border);
     border-top: none;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     max-height: 420px;
     overflow-y: auto;
     display: none;
@@ -269,23 +271,22 @@ html {
     gap: 10px;
     padding: 8px 14px;
     text-decoration: none;
-    color: #c9d1d9;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    transition: background 0.15s;
+    color: #d4cfc7;
+    border-bottom: 1px solid var(--medieval-border);
 }
 
 .live-search-dropdown .search-item:hover,
 .live-search-dropdown .search-item.active {
-    background: #21262d;
+    background: var(--medieval-leather);
 }
 
 .live-search-dropdown .search-item-thumb {
     width: 40px;
     height: 40px;
-    border-radius: 6px;
+    border-radius: 4px;
     overflow: hidden;
     flex-shrink: 0;
-    background: #1a1a2e;
+    background: #0f0d0a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -303,16 +304,18 @@ html {
 }
 
 .live-search-dropdown .search-item-title {
+    font-family: 'Cinzel', serif;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: .85rem;
+    color: var(--medieval-gold);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .live-search-dropdown .search-item-meta {
-    font-size: 0.77rem;
-    color: #8b949e;
+    font-size: .77rem;
+    color: #8a7e6a;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -321,58 +324,30 @@ html {
 .live-search-dropdown .search-footer {
     padding: 10px 14px;
     text-align: center;
-    font-size: 0.85rem;
-    background: #0d1117;
-    border-radius: 0 0 8px 8px;
+    font-size: .85rem;
+    background: #12100c;
+    border-top: 1px solid var(--medieval-border);
 }
 
 .live-search-dropdown .search-footer a {
-    color: #6ea8fe;
+    color: var(--medieval-gold);
     text-decoration: none;
     font-weight: 500;
-}
-
-.live-search-dropdown .search-footer a:hover {
-    text-decoration: underline;
 }
 
 .live-search-spinner {
     padding: 16px;
     text-align: center;
-    color: #8b949e;
+    color: #8a7e6a;
 }
 
-/* Navbar search dropdown (inherits dark) */
-.navbar .live-search-dropdown {
-    background: #161b22;
-    border-color: rgba(255,255,255,0.1);
-}
-
-.navbar .live-search-dropdown .search-item {
-    color: #c9d1d9;
-    border-bottom-color: rgba(255,255,255,0.05);
-}
-
-.navbar .live-search-dropdown .search-item:hover,
-.navbar .live-search-dropdown .search-item.active {
-    background: #21262d;
-}
-
-.navbar .live-search-dropdown .search-item-meta {
-    color: #8b949e;
-}
-
-.navbar .live-search-dropdown .search-footer {
-    background: #0d1117;
-}
-
-.navbar .live-search-dropdown .search-footer a {
-    color: #6ea8fe;
-}
-
-/* File category live filter loading */
 .file-grid-loading {
     opacity: 0.5;
     pointer-events: none;
-    transition: opacity 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section { padding: 2rem 0; }
+    .hero-section h1 { font-size: 1.5rem; }
 }

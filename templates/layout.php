@@ -46,7 +46,7 @@ $_categories = \App\models\Category::all();
 <body class="d-flex flex-column min-vh-100">
 
 <!-- CoRT Notice -->
-<div class="bg-primary text-white text-center py-1 small">
+<div class="cort-notice text-white text-center py-1">
     Looking for CoRT? Visit <a href="https://cort.ovh?utm_source=tools4regnum" class="text-white fw-bold text-decoration-underline" target="_blank" rel="noopener">cort.ovh</a>
 </div>
 

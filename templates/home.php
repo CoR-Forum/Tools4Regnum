@@ -35,7 +35,7 @@
             <?php foreach ($categories as $cat): ?>
                 <div class="col-6 col-md-4 col-lg-3">
                     <a href="/<?= e($cat['slug']) ?>" class="text-decoration-none">
-                        <div class="card category-card h-100 text-center border-0 shadow-sm">
+                        <div class="card category-card h-100 text-center shadow-sm">
                             <div class="card-body">
                                 <i class="bi <?= e($cat['icon'] ?? 'bi-folder') ?> display-4 text-primary"></i>
                                 <h5 class="card-title mt-3"><?= e($cat['name'] ?? $cat['slug']) ?></h5>
@@ -52,13 +52,13 @@
 
 <!-- Recent Entries -->
 <?php if (!empty($recentEntries)): ?>
-<section class="py-5" style="background-color: var(--bs-tertiary-bg);">
+<section class="py-5 section-alt">
     <div class="container">
         <h2 class="mb-4"><i class="bi bi-clock-history me-2"></i><?= e(__('recent_entries')) ?></h2>
         <div class="row g-4">
             <?php foreach ($recentEntries as $entry): ?>
                 <div class="col-md-6 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-sm">
                         <?php $thumb = json_decode($entry['images_json'] ?? '[]', true)[0] ?? ($entry['image'] ?? ''); ?>
                         <?php if (!empty($thumb)): ?>
                             <img src="<?= e($thumb) ?>" class="card-img-top" alt="<?= e($entry['title'] ?? '') ?>"
