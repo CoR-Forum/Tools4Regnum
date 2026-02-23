@@ -37,12 +37,12 @@ class Favorite
     /**
      * Get all favorited entries for a user.
      */
-    public static function forUser(int $userId, string $lang = null): array
+    public static function forUser(int $userId, ?string $lang = null): array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
         $stmt = $pdo->prepare('
-            SELECT e.*, et.title, et.summary, e.image,
+            SELECT e.*, et.title, et.summary, e.images_json,
                    c.slug as category_slug, ct.name as category_name,
                    f.created_at as favorited_at
             FROM favorites f
