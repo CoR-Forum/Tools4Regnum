@@ -98,6 +98,9 @@ return [
     'error_403'         => 'Acceso denegado',
     'error_403_text'    => 'No tienes permiso para acceder a esta página.',
 
+    // Contributor notice
+    'contributor_notice' => '¿Quieres añadir o modificar contenido? Contacta a <strong>Joshua2504</strong> en el foro.',
+
     // Footer
     'footer_text'       => 'Tools4Regnum es un proyecto de fans y no está afiliado a NGD Studios.',
     'footer_forum'      => 'cor-forum.de',

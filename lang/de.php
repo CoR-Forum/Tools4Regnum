@@ -98,6 +98,9 @@ return [
     'error_403'         => 'Zugriff verweigert',
     'error_403_text'    => 'Du hast keine Berechtigung, diese Seite aufzurufen.',
 
+    // Contributor notice
+    'contributor_notice' => 'Möchtest du Inhalte hinzufügen oder bearbeiten? Kontaktiere <strong>Joshua2504</strong> im Forum.',
+
     // Footer
     'footer_text'       => 'Tools4Regnum ist ein Fan-Projekt und steht in keiner Verbindung zu NGD Studios.',
     'footer_forum'      => 'cor-forum.de',
