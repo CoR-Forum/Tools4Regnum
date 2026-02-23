@@ -8,7 +8,7 @@ class Category
     /**
      * Get all categories with translations for current language.
      */
-    public static function all(string $lang = null): array
+    public static function all(?string $lang = null): array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
@@ -41,7 +41,7 @@ class Category
     /**
      * Find a category by slug.
      */
-    public static function findBySlug(string $slug, string $lang = null): ?array
+    public static function findBySlug(string $slug, ?string $lang = null): ?array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();

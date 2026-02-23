@@ -8,7 +8,7 @@ class Entry
     /**
      * List entries for a category with translations.
      */
-    public static function byCategory(int $categoryId, string $lang = null, int $limit = 24, int $offset = 0): array
+    public static function byCategory(int $categoryId, ?string $lang = null, int $limit = 24, int $offset = 0): array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
@@ -46,7 +46,7 @@ class Entry
     /**
      * Find a single entry by category slug + entry slug.
      */
-    public static function findBySlugs(string $categorySlug, string $entrySlug, string $lang = null): ?array
+    public static function findBySlugs(string $categorySlug, string $entrySlug, ?string $lang = null): ?array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
@@ -85,7 +85,7 @@ class Entry
     /**
      * Find entry by ID.
      */
-    public static function find(int $id, string $lang = null): ?array
+    public static function find(int $id, ?string $lang = null): ?array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
@@ -232,7 +232,7 @@ class Entry
     /**
      * Full-text search across entry translations.
      */
-    public static function search(string $query, string $lang = null, int $limit = 50): array
+    public static function search(string $query, ?string $lang = null, int $limit = 50): array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
@@ -260,7 +260,7 @@ class Entry
     /**
      * Get recently updated entries.
      */
-    public static function recent(int $limit = 10, string $lang = null): array
+    public static function recent(int $limit = 10, ?string $lang = null): array
     {
         $lang = $lang ?? currentLang();
         $pdo = Database::getConnection();
