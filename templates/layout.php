@@ -32,7 +32,7 @@ $_categories = \App\models\Category::all();
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../public/assets/css/style.css') ?>" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1LR997BKEZ"></script>
@@ -219,6 +219,6 @@ $_categories = \App\models\Category::all();
     const CSRF_TOKEN = "<?= e(csrfToken()) ?>";
     const IS_LOGGED_IN = <?= Auth::isLoggedIn() ? 'true' : 'false' ?>;
 </script>
-<script src="/assets/js/app.js"></script>
+<script src="/assets/js/app.js?v=<?= filemtime(__DIR__ . '/../public/assets/js/app.js') ?>"></script>
 </body>
 </html>
