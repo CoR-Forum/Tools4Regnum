@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "2526:80"
+    volumes:
+      - ./public:/var/www/html/public
+      - ./src:/var/www/html/src
+      - ./templates:/var/www/html/templates
+      - ./lang:/var/www/html/lang
+      - ./data:/var/www/html/data
+    env_file:
+      - .env
+    restart: unless-stopped
