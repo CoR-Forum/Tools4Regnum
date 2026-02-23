@@ -183,7 +183,7 @@ $_categories = \App\models\Category::all();
                 <p class="small text-secondary mb-0"><?= e(__('footer_text')) ?></p>
             </div>
             <div class="col-md-6 text-md-end">
-                <a href="https://cor-forum.de" class="text-secondary text-decoration-none" target="_blank" rel="noopener">
+                <a href="https://cor-forum.de?utm_source=tools4regnum" class="text-secondary text-decoration-none" target="_blank" rel="noopener">
                     <i class="bi bi-chat-dots me-1"></i><?= e(__('footer_forum')) ?>
                 </a>
                 <br>
