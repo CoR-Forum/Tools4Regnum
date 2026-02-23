@@ -44,4 +44,9 @@ RUN mkdir -p /var/www/html/data /var/www/html/public/uploads \
 
 WORKDIR /var/www/html
 
+# Entrypoint to fix bind-mount permissions at runtime
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 EXPOSE 80
